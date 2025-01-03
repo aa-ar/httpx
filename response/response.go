@@ -15,10 +15,10 @@ type Response struct {
 	Cookies []*http.Cookie
 }
 
-func NewResponse(status int, body interface{}, cookies []*http.Cookie) *Response {
+func New(status int, body interface{}, cookies []*http.Cookie) *Response {
 	if err, ok := body.(errors.Error); ok {
 		if err != nil {
-			body = Error{
+			body = ErrorResponse{
 				Error:   err.Error(),
 				Details: err,
 			}
