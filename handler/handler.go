@@ -11,5 +11,6 @@ type Response interface {
 type Handler interface {
 	Path() string
 	Method() string
+	PreHandler(http.Handler) http.Handler
 	Handler(w http.ResponseWriter, r *http.Request) (Response, error)
 }
