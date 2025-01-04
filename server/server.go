@@ -28,7 +28,6 @@ func NewServer(origins ...string) *Server {
 }
 
 func (s *Server) AttachHandler(handler handler.Handler) *Server {
-	s.router.Use(handler.PreHandler)
 	s.router.Handle(handler.Path(), Handler(handler.Handler)).Methods(handler.Method())
 	return s
 }
